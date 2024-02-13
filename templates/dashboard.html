@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="/static/common.css">
+    <script src="/static/dashboard.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <title>Дашборд задач</title>
+</head>
+<body>
+    <div class = "menu">
+        <div class = "welcome-text">
+            <h2>Здравствуйте, {{ username }}</h2>
+        </div>
+        <div class = "exit-button">
+            <button onclick="window.location.href='/logout';">Выход</button>
+        </div>
+    </div>
+
+    <div class = "lists_of_tasks">
+        <div class = "list_of_tasks not_in_work_tasks_list" data-list-id = "1">
+            <h4>&#128229 Задачи не в работе</h4>
+            <ul id="tasks-list not-in-work-tasks-list"><li></li></ul>
+            <div class="div_add_new_task">
+            <a id="add_new_task" onclick="showAddTaskForm()">Добавить новую задачу...</a>
+            </div>
+        </div>
+        
+        <div class = "list_of_tasks in_work_tasks_list" data-list-id = "2">
+        <h4>&#128187 Задачи в работе</h4>
+        <ul id="tasks-list in-work-tasks-list"><li></li></ul>
+        </div>
+
+        <div class = "list_of_tasks complete_tasks_list" data-list-id = "3">
+        <h4>&#9989 Выполенные задачи </h4>
+        <ul id="tasks-list complete-tasks-list"><li></li></ul>
+        </div>
+    </div>
+
+    <!--Всплывашка с подробностями задачи-->
+    <div id="task-details-modal" class="modal">  
+        <span class="close">&times;</span>  
+        <div class="modal-content">  
+            <div class="title-row">
+                <label for="task-title" id="title_of_task_title">Название:</h2>
+                <input id="task-title" type = "text" maxlength="40"></input>
+            </div>
+            <label for="task-description">☰ Описание</label>  
+            <textarea id="task-description"></textarea>
+            <div class="row">
+                <label for="task-due-date">Дедлайн:</label> 
+                <input type="date" id="task-due-date"> 
+            </div>  
+            <div class="row">
+                <label for="task-status">Статус задачи:</label> 
+                <select id="task-status"> 
+                    <option value="1">Не в работе</option> 
+                    <option value="2">В работе</option> 
+                    <option value="3">Выполнено</option> 
+                </select> 
+            </div>
+            <div class="row">
+                <label for="task-priority">Приоритет задачи:</label> 
+                <select id="task-priority"> 
+                    <option value="1">Низкий</option> 
+                    <option value="2">Средний</option> 
+                    <option value="3">Высокий</option> 
+                </select>
+            </div>
+            <button id="save-changes-btn">Сохранить изменения</button>
+            <button id="delete-task-btn">Удалить задачу</button>
+        </div>  
+    </div>
+
+    <!--Всплывашка с для создания новой задачи-->
+    <div id="add-task-form" style="display: none;" class="modal">
+        <span class="add-task-form-close">&times;</span>
+        <div class="modal-content">
+            <div class="title-row">
+                <label for ="new-task-title">Название:</h2>
+                <input type="text" id="new-task-title" placeholder="Название задачи"></input>
+            </div>  
+            <label for="new-task-description">☰ Описание</label> 
+            <textarea id="new-task-description" placeholder="Описание задачи"></textarea>
+            <div class="row">
+                <label for="new-task-due-date">Дедлайн:</label> 
+                <input type="date" id="new-task-due-date"> 
+            </div> 
+            <div class="row">
+                <label for="new-task-status">Статус задачи:</label> 
+                <select id="new-task-status">
+                    <option value="1">Не в работе</option>
+                    <option value="2">В работе</option>
+                    <option value="3">Выполнено</option>
+                </select>
+            </div>    
+            <div class="row">
+                <label for="new-task-priority">Приоритет задачи:</label> 
+                <select id="new-task-priority"> 
+                    <option value="1">Низкий</option> 
+                    <option value="2">Средний</option> 
+                    <option value="3">Высокий</option> 
+                </select>
+            </div>
+            <button onclick="addNewTask()">Добавить задачу</button>
+        </div>
+    </div>
+
+</body>
+</html>

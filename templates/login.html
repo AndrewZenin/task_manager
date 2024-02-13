@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="/static/common.css">
+    <title>Вход на сайт</title>
+</head>
+<body
+    style = "display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;"
+>
+    <form action="/login" method="post" class ="loginphorm">
+        <h2>Вход</h2>
+        <p>Если вы не зарегистрированы, то <a href = "/register">пройдите регистрацию</a></p>
+        <input type="text" name="username" placeholder="Логин  "><br>
+        <input type="password" name="password" placeholder="Пароль"><br>
+        <button type="submit" id="form-button">Войти</button>
+        <p>Если вы забыли пароль, <a href = "/reset_password">вы можете его сбросить</a></p>
+    </form>
+</body>
+</html>
